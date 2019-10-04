@@ -1,9 +1,29 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Tab Two
+      Moedas favoritas
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content></ion-content>
+<ion-content>
+  <ion-list>
+    <ion-list-header>
+      Moedas
+    </ion-list-header>
+
+    <ng-container *ngFor="let coin of coins;">
+    <ion-item *ngIf="coin.favorite">
+      <ion-avatar slot="start">
+        <img src="assets/icon/{{coin.name}}.png">
+      </ion-avatar>
+      <ion-label>
+        <h2>{{coin.name}}</h2>
+        <h3>${{coin.value}}</h3>
+        <ion-button (click)="deletarFavoritos(coin.index)" fill="clean" class="desfavoritar"><ion-icon name="close"></ion-icon></ion-button>
+      </ion-label>
+    </ion-item>
+  </ng-container>
+
+  </ion-list>
+</ion-content>
